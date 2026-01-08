@@ -2,13 +2,14 @@
 
 export const currentUser = {
   id: 'user-1',
-  name: 'Sarah Chen',
-  headline: 'Product Designer at Spotify | UX Enthusiast',
-  location: 'San Francisco, CA',
-  company: '🎵 Spotify',
-  avatar: 'https://randomuser.me/api/portraits/women/65.jpg',
-  profileViewers: 127,
-  postImpressions: 2450,
+  name: 'Alex Thompson',
+  headline: 'Senior Software Engineer at Meta | React Expert',
+  location: 'New York, USA',
+  company: 'Meta',
+  companyLogo: 'https://logo.clearbit.com/meta.com',
+  avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+  profileViewers: 142,
+  postImpressions: 1247,
 };
 
 export const navItems = [
@@ -215,10 +216,10 @@ export const news = [
 ];
 
 export const puzzleGames = [
-  { id: 'zip', name: 'Zip', score: '#297', color: '#9b6400', connections: '78 connections played' },
-  { id: 'sudoku', name: 'Mini Sudoku', score: '#150', color: '#0a66c2', connections: '31 connections played' },
-  { id: 'tango', name: 'Tango', score: '#458', color: '#c37d16', connections: '27 connections played' },
-  { id: 'queens', name: 'Queens', score: '#618', color: '#5f2a84', connections: '39 connections played' },
+  { id: 'zip', name: 'Zip', score: '#297', image: 'https://picsum.photos/seed/zip/40/40', connections: '87 connections played' },
+  { id: 'sudoku', name: 'Mini Sudoku', score: '#150', image: 'https://picsum.photos/seed/sudoku/40/40', connections: '35 connections played' },
+  { id: 'tango', name: 'Tango', score: '#458', image: 'https://picsum.photos/seed/tango/40/40', connections: '30 connections played' },
+  { id: 'queens', name: 'Queens', score: '#618', image: 'https://picsum.photos/seed/queens/40/40', connections: '41 connections played' },
 ];
 
 export const promotedCompany = {

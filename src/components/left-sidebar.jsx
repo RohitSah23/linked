@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import { Box, Typography, Avatar, Divider, Stack, Badge } from '@mui/material';
-import { Bookmark, Group, CalendarMonth, Tag, Add } from '@mui/icons-material';
-import { currentUser, sidebarLinks } from '@/data/mockData';
+import { Bookmark, Groups, Newspaper, CalendarMonth, Add } from '@mui/icons-material';
+import { currentUser } from '@/data/mockData';
 
 const LeftSidebar = () => {
   return (
@@ -12,10 +12,27 @@ const LeftSidebar = () => {
           sx={{
             height: 56,
             background: 'linear-gradient(180deg, #a0b4b7 0%, #c5d4d6 100%)',
+            position: 'relative',
           }}
-        />
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '2px',
+            }}
+          >
+            <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255,255,255,0.3)' }} />
+            <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255,255,255,0.2)' }} />
+            <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255,255,255,0.2)' }} />
+            <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255,255,255,0.3)' }} />
+          </Box>
+        </Box>
 
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: -4 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-start', ml: 2, mt: -4 }}>
           <Badge
             overlap="circular"
             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
@@ -47,8 +64,8 @@ const LeftSidebar = () => {
           </Badge>
         </Box>
 
-        <Stack alignItems="center" sx={{ px: 2, pt: 1, pb: 2 }}>
-          <Typography variant="body1" sx={{ fontWeight: 600, fontSize: 16, textAlign: 'center' }}>
+        <Stack alignItems="flex-start" sx={{ px: 2, pt: 1.5, pb: 2 }}>
+          <Typography variant="body1" sx={{ fontWeight: 600, fontSize: 16 }}>
             {currentUser.name}
           </Typography>
           <Typography
@@ -56,8 +73,8 @@ const LeftSidebar = () => {
             sx={{
               fontSize: 12,
               color: 'rgba(0,0,0,0.6)',
-              textAlign: 'center',
               lineHeight: 1.4,
+              mt: 0.5,
             }}
           >
             {currentUser.headline}
@@ -65,26 +82,37 @@ const LeftSidebar = () => {
           <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)', mt: 0.5 }}>
             {currentUser.location}
           </Typography>
-          <Box
-            sx={{
-              mt: 1,
-              bgcolor: 'rgba(0,0,0,0.08)',
-              borderRadius: '12px',
-              px: 1,
-              py: 0.25,
-            }}
-          >
+          <Stack direction="row" alignItems="center" spacing={0.75} sx={{ mt: 1.5 }}>
+            <Box
+              sx={{
+                width: 18,
+                height: 18,
+                borderRadius: '50%',
+                bgcolor: '#000',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                overflow: 'hidden',
+              }}
+            >
+              <Box
+                component="img"
+                src={currentUser.companyLogo}
+                sx={{ width: 18, height: 18, objectFit: 'cover' }}
+                onError={(e) => { e.target.style.display = 'none'; }}
+              />
+            </Box>
             <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.9)', fontWeight: 600 }}>
               {currentUser.company}
             </Typography>
-          </Box>
+          </Stack>
         </Stack>
 
         <Divider />
 
         <Box sx={{ py: 1.5, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}>
           <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
-            <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)', fontWeight: 600 }}>
+            <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)' }}>
               Profile viewers
             </Typography>
             <Typography variant="caption" sx={{ fontSize: 12, color: '#0a66c2', fontWeight: 600 }}>
@@ -92,7 +120,7 @@ const LeftSidebar = () => {
             </Typography>
           </Stack>
           <Stack direction="row" justifyContent="space-between" sx={{ px: 2, mt: 0.5 }}>
-            <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)', fontWeight: 600 }}>
+            <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)' }}>
               Post impressions
             </Typography>
             <Typography variant="caption" sx={{ fontSize: 12, color: '#0a66c2', fontWeight: 600 }}>
@@ -114,41 +142,54 @@ const LeftSidebar = () => {
             </Typography>
           </Stack>
         </Box>
-
-        <Divider />
-
-        <Stack
-          direction="row"
-          alignItems="center"
-          spacing={1}
-          sx={{ px: 2, py: 1.5, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
-        >
-          <Bookmark sx={{ fontSize: 16, color: 'rgba(0,0,0,0.6)' }} />
-          <Typography variant="caption" sx={{ fontSize: 12, fontWeight: 600 }}>
-            Saved Items
-          </Typography>
-        </Stack>
       </Box>
 
       <Box sx={{ bgcolor: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
-        <Stack sx={{ p: 1.5 }} spacing={0.5}>
-          {sidebarLinks.map((link) => {
-            const IconComponent = link.icon === 'Group' ? Group : link.icon === 'Tag' ? Tag : CalendarMonth;
-            return (
-              <Stack
-                key={link.id}
-                direction="row"
-                alignItems="center"
-                spacing={1}
-                sx={{ py: 0.5, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
-              >
-                <IconComponent sx={{ fontSize: 16, color: 'rgba(0,0,0,0.6)' }} />
-                <Typography variant="caption" sx={{ fontSize: 12, color: '#0a66c2', fontWeight: 600 }}>
-                  {link.label}
-                </Typography>
-              </Stack>
-            );
-          })}
+        <Stack sx={{ py: 1 }}>
+          <Stack
+            direction="row"
+            alignItems="center"
+            spacing={1.5}
+            sx={{ px: 2, py: 1, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
+          >
+            <Bookmark sx={{ fontSize: 18, color: 'rgba(0,0,0,0.6)' }} />
+            <Typography variant="body2" sx={{ fontSize: 12, fontWeight: 600 }}>
+              Saved items
+            </Typography>
+          </Stack>
+          <Stack
+            direction="row"
+            alignItems="center"
+            spacing={1.5}
+            sx={{ px: 2, py: 1, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
+          >
+            <Groups sx={{ fontSize: 18, color: 'rgba(0,0,0,0.6)' }} />
+            <Typography variant="body2" sx={{ fontSize: 12, fontWeight: 600 }}>
+              Groups
+            </Typography>
+          </Stack>
+          <Stack
+            direction="row"
+            alignItems="center"
+            spacing={1.5}
+            sx={{ px: 2, py: 1, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
+          >
+            <Newspaper sx={{ fontSize: 18, color: 'rgba(0,0,0,0.6)' }} />
+            <Typography variant="body2" sx={{ fontSize: 12, fontWeight: 600 }}>
+              Newsletters
+            </Typography>
+          </Stack>
+          <Stack
+            direction="row"
+            alignItems="center"
+            spacing={1.5}
+            sx={{ px: 2, py: 1, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
+          >
+            <CalendarMonth sx={{ fontSize: 18, color: 'rgba(0,0,0,0.6)' }} />
+            <Typography variant="body2" sx={{ fontSize: 12, fontWeight: 600 }}>
+              Events
+            </Typography>
+          </Stack>
         </Stack>
       </Box>
     </Stack>

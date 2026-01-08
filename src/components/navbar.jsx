@@ -200,24 +200,28 @@ const Navbar = () => {
               </Stack>
             </Stack>
 
-            <Box sx={{ display: { xs: 'none', lg: 'block' }, ml: 2, textAlign: 'center', maxWidth: 90 }}>
+            <Stack
+              alignItems="center"
+              sx={{ cursor: 'pointer', display: { xs: 'none', lg: 'flex' }, ml: 1 }}
+            >
               <Typography
                 variant="caption"
                 sx={{
                   fontSize: 12,
                   color: '#915907',
                   textDecoration: 'underline',
-                  lineHeight: 1.2,
-                  fontWeight: 600,
+                  lineHeight: 1.3,
+                  fontWeight: 400,
                   cursor: 'pointer',
+                  whiteSpace: 'nowrap',
                 }}
               >
-                Reactivate Premium
+                Reactivate Premium:
               </Typography>
-              <Typography variant="caption" sx={{ fontSize: 12, color: '#915907', fontWeight: 600, display: 'block' }}>
+              <Typography variant="caption" sx={{ fontSize: 12, color: '#915907', fontWeight: 600, whiteSpace: 'nowrap' }}>
                 50% Off
               </Typography>
-            </Box>
+            </Stack>
           </Stack>
         </Toolbar>
       </Container>

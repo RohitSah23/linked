@@ -65,7 +65,7 @@ const RightSidebar = () => {
           {puzzleGames.map((game) => (
             <Stack key={game.id} direction="row" alignItems="center" justifyContent="space-between" sx={{ cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' }, mx: -1.5, px: 1.5, py: 0.5 }}>
               <Stack direction="row" alignItems="center" spacing={1}>
-                <Box sx={{ width: 24, height: 24, bgcolor: game.color, borderRadius: '4px' }} />
+                <Box component="img" src={game.image} sx={{ width: 40, height: 40, borderRadius: '4px' }} />
                 <Box>
                   <Typography variant="caption" sx={{ fontWeight: 600, fontSize: 12 }}>
                     {game.name} <span style={{ fontWeight: 400, color: 'rgba(0,0,0,0.6)' }}>{game.score}</span>
@@ -89,35 +89,29 @@ const RightSidebar = () => {
         </Button>
       </Box>
 
-      <Box sx={{ px: 1 }}>
-        {footerLinks.map((row, rowIdx) => (
-          <Stack key={rowIdx} direction="row" flexWrap="wrap" sx={{ mb: 0.5 }}>
-            {row.map((link, linkIdx) => (
-              <Typography
-                key={linkIdx}
-                variant="caption"
-                sx={{
-                  fontSize: 12,
-                  color: 'rgba(0,0,0,0.6)',
-                  cursor: 'pointer',
-                  mr: 1,
-                  '&:hover': { color: '#0a66c2', textDecoration: 'underline' },
-                }}
-              >
-                {link}
-              </Typography>
-            ))}
-          </Stack>
-        ))}
-        <Stack direction="row" alignItems="center" spacing={0.5} sx={{ mt: 1 }}>
-          <Box
-            component="svg"
-            viewBox="0 0 24 24"
-            sx={{ width: 56, height: 14, fill: 'rgba(0,0,0,0.6)' }}
-          >
-            <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z" />
-          </Box>
-          <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)' }}>
+      <Box sx={{ px: 1, py: 1 }}>
+        <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{ mb: 0.5 }}>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.6)', cursor: 'pointer', mx: 0.5, '&:hover': { color: '#0a66c2', textDecoration: 'underline' } }}>About</Typography>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.6)', cursor: 'pointer', mx: 0.5, '&:hover': { color: '#0a66c2', textDecoration: 'underline' } }}>Accessibility</Typography>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.6)', cursor: 'pointer', mx: 0.5, '&:hover': { color: '#0a66c2', textDecoration: 'underline' } }}>Help Center</Typography>
+        </Stack>
+        <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{ mb: 0.5 }}>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.6)', cursor: 'pointer', mx: 0.5, '&:hover': { color: '#0a66c2', textDecoration: 'underline' } }}>Privacy & Terms ▾</Typography>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.6)', cursor: 'pointer', mx: 0.5, '&:hover': { color: '#0a66c2', textDecoration: 'underline' } }}>Ad Choices</Typography>
+        </Stack>
+        <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{ mb: 0.5 }}>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.6)', cursor: 'pointer', mx: 0.5, '&:hover': { color: '#0a66c2', textDecoration: 'underline' } }}>Advertising</Typography>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.6)', cursor: 'pointer', mx: 0.5, '&:hover': { color: '#0a66c2', textDecoration: 'underline' } }}>Business Services ▾</Typography>
+        </Stack>
+        <Stack direction="row" flexWrap="wrap" justifyContent="center" sx={{ mb: 1 }}>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.6)', cursor: 'pointer', mx: 0.5, '&:hover': { color: '#0a66c2', textDecoration: 'underline' } }}>Get the LinkedIn app</Typography>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.6)', cursor: 'pointer', mx: 0.5, '&:hover': { color: '#0a66c2', textDecoration: 'underline' } }}>More</Typography>
+        </Stack>
+        <Stack direction="row" alignItems="center" justifyContent="center" spacing={0.5} sx={{ mt: 1 }}>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.9)', fontWeight: 600 }}>
+            Linked<Box component="span" sx={{ color: '#0a66c2', fontWeight: 700, bgcolor: '#0a66c2', color: '#fff', px: 0.3, borderRadius: '2px' }}>in</Box>
+          </Typography>
+          <Typography variant="caption" sx={{ fontSize: 11, color: 'rgba(0,0,0,0.6)' }}>
             LinkedIn Corporation © 2026
           </Typography>
         </Stack>

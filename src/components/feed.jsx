@@ -14,7 +14,7 @@ import {
 import { currentUser, posts } from '@/data/mockData';
 
 const CreatePostBox = () => (
-  <Box sx={{ bgcolor: '#fff', borderRadius: '8px', p: 2, boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
+  <Box sx={{ bgcolor: '#fff', borderRadius: { xs: 0, md: '8px' }, p: 2, boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
     <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
       <Avatar sx={{ width: 48, height: 48 }} src={currentUser.avatar} />
       <Button
@@ -76,7 +76,7 @@ const ReactionIcons = () => (
 
 const PostCard = ({ post }) => {
   return (
-    <Box sx={{ bgcolor: '#fff', borderRadius: '8px', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
+    <Box sx={{ bgcolor: '#fff', borderRadius: { xs: 0, md: '8px' }, boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
       <Stack direction="row" spacing={1.5} sx={{ p: 2 }}>
         <Avatar sx={{ width: 48, height: 48 }} src={post.author.avatar} />
         <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -190,16 +190,6 @@ const Feed = () => {
   return (
     <Stack spacing={1}>
       <CreatePostBox />
-
-      <Stack direction="row" alignItems="center" spacing={1}>
-        <Divider sx={{ flex: 1 }} />
-        <Typography variant="caption" sx={{ color: 'rgba(0,0,0,0.6)', fontSize: 12, whiteSpace: 'nowrap' }}>
-          Sort by:{' '}
-          <Typography component="span" sx={{ color: 'rgba(0,0,0,0.9)', fontWeight: 600, cursor: 'pointer' }}>
-            Top ▾
-          </Typography>
-        </Typography>
-      </Stack>
 
       {posts.map((post) => (
         <PostCard key={post.id} post={post} />

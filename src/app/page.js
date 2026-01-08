@@ -16,12 +16,11 @@ export default function Home() {
         maxWidth="lg" 
         sx={{ 
           py: { xs: 1, md: 3 }, 
-          px: { xs: 0, sm: 2, md: 3 },
-          pb: { xs: 10, md: 3 },  // Extra padding on mobile for bottom nav
+          px: { xs: 0, md: 2 },
+          pb: { xs: 10, md: 3 },
         }}
       >
         <Grid container spacing={{ xs: 1, md: 3 }}>
-          {/* Left Column - Hidden on mobile/tablet */}
           <Grid 
             item 
             sx={{ 
@@ -33,7 +32,6 @@ export default function Home() {
             <LeftSidebar />
           </Grid>
 
-          {/* Center Column - Full width on mobile */}
           <Grid 
             item 
             xs={12} 
@@ -46,7 +44,6 @@ export default function Home() {
             <Feed />
           </Grid>
 
-          {/* Right Column - Hidden on mobile/tablet */}
           <Grid 
             item 
             sx={{ 
@@ -60,7 +57,6 @@ export default function Home() {
         </Grid>
       </Container>
       
-      {/* Mobile Bottom Navigation */}
       <MobileBottomNav />
     </Box>
   );
