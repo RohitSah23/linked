@@ -4,10 +4,10 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#0a66c2', // LinkedIn blue
+      main: '#0a66c2',
     },
     background: {
-      default: '#f4f2ee', // LinkedIn background
+      default: '#f4f2ee',
       paper: '#ffffff',
     },
     text: {

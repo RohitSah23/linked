@@ -1,13 +1,34 @@
 'use client';
 import React from 'react';
-import { Box, Typography, Avatar, Divider, Stack, Badge } from '@mui/material';
+import { Box, Typography, Avatar, Stack, Badge } from '@mui/material';
 import { Bookmark, Groups, Newspaper, CalendarMonth, Add } from '@mui/icons-material';
 import { currentUser } from '@/data/mockData';
+
+const SidebarCard = ({ children, sx = {} }) => (
+  <Box sx={{ bgcolor: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)', ...sx }}>
+    {children}
+  </Box>
+);
+
+const SidebarLink = ({ icon: Icon, label }) => (
+  <Stack
+    direction="row"
+    alignItems="center"
+    spacing={1.5}
+    sx={{ px: 2, py: 1, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
+  >
+    <Icon sx={{ fontSize: 18, color: 'rgba(0,0,0,0.6)' }} />
+    <Typography variant="body2" sx={{ fontSize: 12, fontWeight: 600 }}>
+      {label}
+    </Typography>
+  </Stack>
+);
 
 const LeftSidebar = () => {
   return (
     <Stack spacing={1} sx={{ position: 'sticky', top: 76, alignSelf: 'flex-start' }}>
-      <Box sx={{ bgcolor: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
+      {/* Profile Card */}
+      <SidebarCard>
         <Box
           sx={{
             height: 56,
@@ -46,11 +67,7 @@ const LeftSidebar = () => {
             }
           >
             <Avatar
-              sx={{
-                width: 72,
-                height: 72,
-                border: '2px solid #fff',
-              }}
+              sx={{ width: 72, height: 72, border: '2px solid #fff' }}
               src={currentUser.avatar}
             />
           </Badge>
@@ -77,20 +94,17 @@ const LeftSidebar = () => {
           <Stack direction="row" alignItems="center" spacing={0.75} sx={{ mt: 1.5 }}>
             <Avatar
               src={currentUser.companyLogo}
-              sx={{
-                width: 18,
-                height: 18,
-                bgcolor: '#000',
-              }}
+              sx={{ width: 18, height: 18, bgcolor: '#000' }}
             />
             <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.9)', fontWeight: 600 }}>
               {currentUser.company}
             </Typography>
           </Stack>
         </Stack>
-      </Box>
+      </SidebarCard>
 
-      <Box sx={{ bgcolor: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
+      {/* Stats Card */}
+      <SidebarCard>
         <Box sx={{ py: 1.5, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}>
           <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
             <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)' }}>
@@ -109,9 +123,10 @@ const LeftSidebar = () => {
             </Typography>
           </Stack>
         </Box>
-      </Box>
+      </SidebarCard>
 
-      <Box sx={{ bgcolor: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
+      {/* Premium CTA Card */}
+      <SidebarCard>
         <Box sx={{ px: 2, py: 1.5, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}>
           <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)' }}>
             Grow your career and get ahead
@@ -123,56 +138,17 @@ const LeftSidebar = () => {
             </Typography>
           </Stack>
         </Box>
-      </Box>
+      </SidebarCard>
 
-      <Box sx={{ bgcolor: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
+      {/* Quick Links Card */}
+      <SidebarCard>
         <Stack sx={{ py: 1 }}>
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={1.5}
-            sx={{ px: 2, py: 1, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
-          >
-            <Bookmark sx={{ fontSize: 18, color: 'rgba(0,0,0,0.6)' }} />
-            <Typography variant="body2" sx={{ fontSize: 12, fontWeight: 600 }}>
-              Saved items
-            </Typography>
-          </Stack>
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={1.5}
-            sx={{ px: 2, py: 1, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
-          >
-            <Groups sx={{ fontSize: 18, color: 'rgba(0,0,0,0.6)' }} />
-            <Typography variant="body2" sx={{ fontSize: 12, fontWeight: 600 }}>
-              Groups
-            </Typography>
-          </Stack>
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={1.5}
-            sx={{ px: 2, py: 1, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
-          >
-            <Newspaper sx={{ fontSize: 18, color: 'rgba(0,0,0,0.6)' }} />
-            <Typography variant="body2" sx={{ fontSize: 12, fontWeight: 600 }}>
-              Newsletters
-            </Typography>
-          </Stack>
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={1.5}
-            sx={{ px: 2, py: 1, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}
-          >
-            <CalendarMonth sx={{ fontSize: 18, color: 'rgba(0,0,0,0.6)' }} />
-            <Typography variant="body2" sx={{ fontSize: 12, fontWeight: 600 }}>
-              Events
-            </Typography>
-          </Stack>
+          <SidebarLink icon={Bookmark} label="Saved items" />
+          <SidebarLink icon={Groups} label="Groups" />
+          <SidebarLink icon={Newspaper} label="Newsletters" />
+          <SidebarLink icon={CalendarMonth} label="Events" />
         </Stack>
-      </Box>
+      </SidebarCard>
     </Stack>
   );
 };

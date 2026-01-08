@@ -74,6 +74,23 @@ const ReactionIcons = () => (
   </Stack>
 );
 
+const FeedActionButton = ({ icon, label }) => (
+  <Button
+    startIcon={icon}
+    sx={{
+      color: 'rgba(0,0,0,0.6)',
+      fontWeight: 600,
+      fontSize: { xs: 12, md: 14 },
+      flex: 1,
+      borderRadius: 1,
+      py: 1.5,
+      '&:hover': { bgcolor: 'rgba(0,0,0,0.08)' },
+    }}
+  >
+    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>{label}</Box>
+  </Button>
+);
+
 const PostCard = ({ post }) => {
   return (
     <Box sx={{ bgcolor: '#fff', borderRadius: { xs: 0, md: '8px' }, boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
@@ -159,28 +176,10 @@ const PostCard = ({ post }) => {
       <Divider />
 
       <Stack direction="row" justifyContent="space-around" sx={{ py: 0.5 }}>
-        {[
-          { id: 'like', icon: <ThumbUpOffAlt sx={{ fontSize: 20 }} />, label: 'Like' },
-          { id: 'comment', icon: <ChatBubbleOutline sx={{ fontSize: 20 }} />, label: 'Comment' },
-          { id: 'repost', icon: <Repeat sx={{ fontSize: 20 }} />, label: 'Repost' },
-          { id: 'send', icon: <SendOutlined sx={{ fontSize: 20 }} />, label: 'Send' },
-        ].map((action) => (
-          <Button
-            key={action.id}
-            startIcon={action.icon}
-            sx={{
-              color: 'rgba(0,0,0,0.6)',
-              fontWeight: 600,
-              fontSize: { xs: 12, md: 14 },
-              flex: 1,
-              borderRadius: 1,
-              py: 1.5,
-              '&:hover': { bgcolor: 'rgba(0,0,0,0.08)' },
-            }}
-          >
-            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>{action.label}</Box>
-          </Button>
-        ))}
+        <FeedActionButton icon={<ThumbUpOffAlt sx={{ fontSize: 20 }} />} label="Like" />
+        <FeedActionButton icon={<ChatBubbleOutline sx={{ fontSize: 20 }} />} label="Comment" />
+        <FeedActionButton icon={<Repeat sx={{ fontSize: 20 }} />} label="Repost" />
+        <FeedActionButton icon={<SendOutlined sx={{ fontSize: 20 }} />} label="Send" />
       </Stack>
     </Box>
   );
