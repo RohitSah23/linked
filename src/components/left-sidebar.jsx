@@ -27,7 +27,6 @@ const SidebarLink = ({ icon: Icon, label }) => (
 const LeftSidebar = () => {
   return (
     <Stack spacing={1} sx={{ position: 'sticky', top: 76, alignSelf: 'flex-start' }}>
-      {/* Profile Card */}
       <SidebarCard>
         <Box
           sx={{
@@ -103,7 +102,6 @@ const LeftSidebar = () => {
         </Stack>
       </SidebarCard>
 
-      {/* Stats Card */}
       <SidebarCard>
         <Box sx={{ py: 1.5, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}>
           <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
@@ -125,7 +123,6 @@ const LeftSidebar = () => {
         </Box>
       </SidebarCard>
 
-      {/* Premium CTA Card */}
       <SidebarCard>
         <Box sx={{ px: 2, py: 1.5, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}>
           <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)' }}>
@@ -140,7 +137,6 @@ const LeftSidebar = () => {
         </Box>
       </SidebarCard>
 
-      {/* Quick Links Card */}
       <SidebarCard>
         <Stack sx={{ py: 1 }}>
           <SidebarLink icon={Bookmark} label="Saved items" />
