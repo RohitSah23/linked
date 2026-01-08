@@ -11,24 +11,16 @@ const LeftSidebar = () => {
         <Box
           sx={{
             height: 56,
-            background: 'linear-gradient(180deg, #a0b4b7 0%, #c5d4d6 100%)',
             position: 'relative',
+            display: 'flex',
           }}
         >
-          <Box
-            sx={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '2px',
-            }}
-          >
-            <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255,255,255,0.3)' }} />
-            <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255,255,255,0.2)' }} />
-            <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255,255,255,0.2)' }} />
-            <Box sx={{ width: 20, height: 20, bgcolor: 'rgba(255,255,255,0.3)' }} />
+          <Box sx={{ flex: 1, bgcolor: '#a0b4b7' }} />
+          <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr' }}>
+            <Box sx={{ width: 28, height: 28, bgcolor: '#9aafb2', borderRight: '1px solid rgba(255,255,255,0.3)', borderBottom: '1px solid rgba(255,255,255,0.3)' }} />
+            <Box sx={{ width: 28, height: 28, bgcolor: '#b8c9cc', borderBottom: '1px solid rgba(255,255,255,0.3)' }} />
+            <Box sx={{ width: 28, height: 28, bgcolor: '#b8c9cc', borderRight: '1px solid rgba(255,255,255,0.3)' }} />
+            <Box sx={{ width: 28, height: 28, bgcolor: '#9aafb2' }} />
           </Box>
         </Box>
 
@@ -83,33 +75,22 @@ const LeftSidebar = () => {
             {currentUser.location}
           </Typography>
           <Stack direction="row" alignItems="center" spacing={0.75} sx={{ mt: 1.5 }}>
-            <Box
+            <Avatar
+              src={currentUser.companyLogo}
               sx={{
                 width: 18,
                 height: 18,
-                borderRadius: '50%',
                 bgcolor: '#000',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                overflow: 'hidden',
               }}
-            >
-              <Box
-                component="img"
-                src={currentUser.companyLogo}
-                sx={{ width: 18, height: 18, objectFit: 'cover' }}
-                onError={(e) => { e.target.style.display = 'none'; }}
-              />
-            </Box>
+            />
             <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.9)', fontWeight: 600 }}>
               {currentUser.company}
             </Typography>
           </Stack>
         </Stack>
+      </Box>
 
-        <Divider />
-
+      <Box sx={{ bgcolor: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
         <Box sx={{ py: 1.5, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}>
           <Stack direction="row" justifyContent="space-between" sx={{ px: 2 }}>
             <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)' }}>
@@ -128,16 +109,16 @@ const LeftSidebar = () => {
             </Typography>
           </Stack>
         </Box>
+      </Box>
 
-        <Divider />
-
+      <Box sx={{ bgcolor: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }}>
         <Box sx={{ px: 2, py: 1.5, cursor: 'pointer', '&:hover': { bgcolor: 'rgba(0,0,0,0.04)' } }}>
           <Typography variant="caption" sx={{ fontSize: 12, color: 'rgba(0,0,0,0.6)' }}>
             Grow your career and get ahead
           </Typography>
           <Stack direction="row" alignItems="center" spacing={0.5}>
             <Box sx={{ width: 16, height: 16, bgcolor: '#f8c77e', borderRadius: '4px' }} />
-            <Typography variant="caption" sx={{ fontSize: 12, fontWeight: 600 }}>
+            <Typography variant="caption" sx={{ fontSize: 12, fontWeight: 600, color: '#915907' }}>
               Reactivate Premium: 50% Off
             </Typography>
           </Stack>

@@ -6,8 +6,8 @@ export const currentUser = {
   headline: 'Senior Software Engineer at Meta | React Expert',
   location: 'New York, USA',
   company: 'Meta',
-  companyLogo: 'https://logo.clearbit.com/meta.com',
-  avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+  companyLogo: 'https://avatars.githubusercontent.com/u/69631?s=200&v=4',
+  avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
   profileViewers: 142,
   postImpressions: 1247,
 };
